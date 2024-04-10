@@ -5,7 +5,7 @@ import Search from '../components/contacts/Search';
 import '../css/font-awesome.css'
 import { useNavigate } from 'react-router-dom';
 import { addContact } from '../redux/actions/contactActions'; // Import the action to add a contact
-import { fetchRandomContact } from '../servisces/contactService'; // Import the function to fetch random contact
+import { fetchRandomContact } from '../services/contactService'; // Import the function to fetch random contact
 
 const ContactPage = () => {
     const [searchText, setSearchText] = useState();

@@ -4,6 +4,7 @@ require('dotenv').config();
 const port = process.env.PORT;
 const contact = require('./routes/contactRouter');
 
+app.use(express.json());
 app.use('/api/contact', contact);
 
 const startApp = async () => {

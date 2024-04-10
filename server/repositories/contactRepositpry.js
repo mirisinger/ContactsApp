@@ -13,7 +13,7 @@ async function getAllContactRepo() {
 
 async function insertContactRepo(name, phone, title, avatarUrl) {
     try {
-        const query = `INSERT INTO ${tableName} (name, phone, title, avatar_url) VALUES (?, ?, ?, ?)`;
+        const query = `INSERT INTO ${tableName} (name, phone, title, avatarUrl) VALUES (?, ?, ?, ?)`;
         const values = [name, phone, title, avatarUrl];
         const result = await db_conection.query(query, values);
         return result.insertId; // Return the ID of the newly inserted contact
@@ -24,7 +24,7 @@ async function insertContactRepo(name, phone, title, avatarUrl) {
 
 async function updateContactRepo(id, name, phone, title, avatarUrl) {
     try {
-        const query = `UPDATE ${tableName} SET name=?, phone=?, title=?, avatar_url=? WHERE id=?`;
+        const query = `UPDATE ${tableName} SET name=?, phone=?, title=?, avatarUrl=? WHERE id=?`;
         const values = [name, phone, title, avatarUrl, id];
         const result = await db_conection.query(query, values);
         return result.affectedRows > 0; // Returns true if any rows were updated
@@ -67,7 +67,7 @@ module.exports = {
 
 // async function insertContactRepo(name, phone, title, avatarUrl) {
 //     try {
-//         const query = `INSERT INTO ${tableName} (name, phone, title, avatar_url) VALUES (?, ?, ?, ?)`;
+//         const query = `INSERT INTO ${tableName} (name, phone, title, avatarUrl) VALUES (?, ?, ?, ?)`;
 //         const values = [name, phone, title, avatarUrl];
 //         const result = await db_conection.query(query, values);
 //         return result.insertId; // Return the ID of the newly inserted contact
@@ -78,7 +78,7 @@ module.exports = {
 
 // async function updateContactRepo(id, name, phone, title, avatarUrl) {
 //     try {
-//         const query = `UPDATE ${tableName} SET name=?, phone=?, title=?, avatar_url=? WHERE id=?`;
+//         const query = `UPDATE ${tableName} SET name=?, phone=?, title=?, avatarUrl=? WHERE id=?`;
 //         const values = [name, phone, title, avatarUrl, id];
 //         const result = await db_conection.query(query, values);
 //         return result.affectedRows > 0; // Returns true if any rows were updated
