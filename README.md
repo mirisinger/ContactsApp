@@ -53,6 +53,7 @@ MVC Architecture
 1. Install Node.js and npm.
 2. Clone this repository.
 3. Install dependencies using npm install.
+4. Run the server-side application using npm start.
 
 ### Features
 
