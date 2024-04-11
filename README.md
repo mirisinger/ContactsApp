@@ -16,7 +16,6 @@ Redux (optional)
 
 1. Clone this repository.
 2. Install dependencies using npm install.
-3. Copy the HTML and CSS files from contact.html, new-contact.html, and contacts.css to the project directory.
 
 ### Features
 
@@ -61,7 +60,7 @@ MVC Architecture
   - Receive and return information in JSON format.
 **Data Management:**
   - Store contact data in server-side memory.
-  - Optionally, integrate with an RDBMS for persistent storage.
+  - Integrate with an RDBMS for persistent storage.
 
 ### API Routes
 
@@ -70,10 +69,3 @@ POST /api/contacts: Create a new contact.
 GET /api/contacts/:id: Get contact by ID.
 PUT /api/contacts/:id: Update contact by ID.
 DELETE /api/contacts/:id: Delete contact by ID.
-
-## Contact
-
-For questions or support, contact:
-
-Miri Singer
-Email: miri.singer@example.com
