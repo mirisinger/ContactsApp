@@ -17,11 +17,10 @@ async function getAllContact(req, res) {
 
 async function addContact(req, res) {
     try {
-        console.log('req.body:',req.body);
         const { name, phone, title, avatarUrl } = req.body;
-        res.send(await insertContactRepo({
+        res.send(await insertContactRepo(
             name, phone, title, avatarUrl
-        }));
+        ));
     }
     catch {
         res.status(500).json({ error: 'Internal Server Error' });
@@ -42,20 +41,6 @@ async function updateContact(req, res) {
     }
 }
 
-
-// async function updateContact(req, res) {
-//     try {
-//         const { id, name, phone, title, avatarUrl } = req.body;
-//         res.send(await updateContactRepo({
-//             id, name, phone, title, avatarUrl
-//         }));
-//     }
-//     catch {
-//         res.status(500).json({ error: 'Internal Server Error' });
-//     }
-// }
-
-//http:3000/contact/id
 async function deleteContactById(req, res) {
     try {
         const id = req.params.id;

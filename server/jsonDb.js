@@ -1,4 +1,4 @@
-// In your contactRepository.js file
+const { v4: uuidv4 } = require('uuid');
 
 let contacts = [
     { id: '1', name: 'Dan Smith', phone: '(123) 745-526657', title: 'BA', avatarUrl: 'https://randomuser.me/api/portraits/men/1.jpg' },
@@ -11,16 +11,11 @@ async function getAllContactRepo() {
 }
 
 async function insertContactRepo(name, phone, title, avatarUrl) {
-    const newContact = {id:'4', name:name, phone:phone, title:title, avatarUrl:avatarUrl };
+    const uniqueId = uuidv4();
+    const newContact = { id: uniqueId, name: name, phone: phone, title: title, avatarUrl: avatarUrl };
     contacts.push(newContact); // Add the new contact to the array
     return newContact.id; // Return the id of the newly added contact
 }
-
-// async function insertContactRepo(name, phone, title, avatarUrl) {
-//     const newContact = { name, phone, title, avatarUrl };
-//     contacts.push(newContact); // Add the new contact to the array
-//     return newContact; // Return the newly added contact
-// }
 
 async function updateContactRepo(id, name, phone, title, avatarUrl) {
     const index = contacts.findIndex(contact => contact.id === id);

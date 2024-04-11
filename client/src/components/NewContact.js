@@ -4,7 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { addContact, updateContact } from '../redux/actions/contactActions';
 import ContactValidation from '../validations/ContactValidation';
 import '../css/contactsCss/contact.css'
-import { v4 as uuidv4 } from 'uuid';
+import { insertNewContact, updateContactReq } from '../services/contactRequest';
 
 
 const NewContact = ({ isNewContact }) => {
@@ -54,18 +54,21 @@ const NewContact = ({ isNewContact }) => {
         }
     };
 
-    const handleSaveButon = () => {
-        const uniqueId = uuidv4();
-        const contact = { id: uniqueId, name: values.name, phone: values.phone, title: values.title, avatarUrl: values.avatarUrl };
+    const handleSaveButon = async () => {
 
         if (isNewContact) {
-            dispatch(addContact(contact));
+            const contact = { name: values.name, phone: values.phone, title: values.title, avatarUrl: values.avatarUrl };
+            const id = await insertNewContact(contact);
+            let newContact = { id: id, name: contact.name, phone: contact.phone, title: contact.title, avatarUrl: contact.avatarUrl };
+            dispatch(addContact(newContact));
             setValues({ name: '', phone: '', title: '' });
             const avatar = GetRandomAvatarUrl;
             setValues({ ...values, avatarUrl: avatar });
         }
         else {
-            dispatch(updateContact(id, contact));
+            const contact = { id: id, name: values.name, phone: values.phone, title: values.title, avatarUrl: values.avatarUrl };
+            const res = await updateContactReq(contact);
+            dispatch(updateContact(contact));
         }
         navigate('/');
     };

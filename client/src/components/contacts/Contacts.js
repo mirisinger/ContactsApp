@@ -1,12 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Contact from "./Contact";
 import '../../css/contactsCss/contact.css';
+import { getContacts } from "../../services/contactRequest";
+import { useDispatch } from 'react-redux';
+import { setContacts } from "../../redux/actions/contactActions";
+
 
 const Contacts = (props) => {
-  const { searchText } = props;
+
+  const dispatch = useDispatch();
   const contacts = useSelector(state => state.contacts.contacts);
-  console.log(contacts);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const fetchedContacts = await getContacts();
+      dispatch(setContacts(fetchedContacts));
+    };
+    fetchData();
+  }, []);
+
+
+  const { searchText } = props;
+
 
   return (
     <div className="contacts-container">
@@ -16,7 +32,7 @@ const Contacts = (props) => {
         if (nameMatch || phoneMatch) {
           return <Contact key={contact.id} {...contact} />;
         } else {
-          return null; 
+          return null;
         }
       })}
     </div>

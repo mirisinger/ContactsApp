@@ -3,14 +3,18 @@ import '../../css/contactsCss/contact.css';
 import { useDispatch } from 'react-redux';
 import { deleteContact } from '../../redux/actions/contactActions';
 import { useNavigate } from 'react-router-dom';
+import { deleteContactById } from '../../services/contactRequest';
 
 const Contact = (props) => {
     const contact = props;
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const handleDeleteContact = () => {
-        dispatch(deleteContact(contact.id));
+    const handleDeleteContact = async() => {
+        const res = await deleteContactById(contact.id);
+        if( res){
+            await dispatch(deleteContact(contact.id));
+        }
     };
 
     const handleContactClick = () => {
