@@ -16,6 +16,7 @@ Redux (optional)
 
 1. Clone this repository.
 2. Install dependencies using npm install.
+3. Run the client-side application using npm start.
 
 ### Features
 
