@@ -3,7 +3,7 @@ const {
     insertContactRepo,
     updateContactRepo,
     deleteContactByIdRepo
-} = require('../jsonDb');
+} = require('../serverData.js');
 // } = require('../repositories/contactRepositpry');
 
 async function getAllContact(req, res) {
